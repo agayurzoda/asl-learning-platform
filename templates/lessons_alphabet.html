@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="alphabet-container">
+  
+  <!-- Sign viewer with arrows -->
+  <div class="sign-viewer">
+    <span id="prev-arrow" class="arrow">&#10094;</span> <!-- Left arrow -->
+    <img 
+      id="sign-image" 
+      src="{{ url_for('static', filename='images/asl_alphabet/A.jpeg') }}" 
+      alt="ASL Sign for Letter A"
+    >
+    <span id="next-arrow" class="arrow">&#10095;</span> <!-- Right arrow -->
+  </div>
+  
+  <!-- Instruction text (italic) -->
+  <p class="instruction">Click a letter to see its sign:</p>
+  
+  <!-- Letter bar -->
+  <div class="letter-bar">
+    {% for letter in items %}
+      <span class="letter" data-letter="{{ letter }}">{{ letter }}</span>
+    {% endfor %}
+  </div>
+
+  <!-- "Take a Quiz" button -->
+  <a class="btn take-quiz-btn" href="{{ url_for('quiz_alphabet') }}">Take a Quiz</a>
+
+</div>
+
+{% endblock %}

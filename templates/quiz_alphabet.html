@@ -1,0 +1,49 @@
+{# templates/quiz_alphabet.html #}
+{% extends "base.html" %}
+{% block content %}
+
+<div class="quiz-page-container" data-quiz="alphabet">
+  <!-- Progress Indicator -->
+  <h2 id="question-progress">Question 1 of 5</h2>
+  
+  <!-- ASL Letter Image -->
+  <div class="sign-viewer">
+    <img
+      id="quiz-sign-image"
+      src="{{ url_for('static', filename='images/asl_alphabet/placeholder.jpeg') }}"
+      alt="ASL Letter"
+    >
+  </div>
+  
+  <!-- Quiz Prompt -->
+  <p class="quiz-prompt">Which letter is this?</p>
+  
+  <!-- Answer Options -->
+  <div class="quiz-answers">
+    <button class="quiz-option" id="option0"></button>
+    <button class="quiz-option" id="option1"></button>
+    <button class="quiz-option" id="option2"></button>
+    <button class="quiz-option" id="option3"></button>
+  </div>
+  
+  <!-- Next Button -->
+  <button id="next-button" class="next-btn" disabled>Next</button>
+
+  <!-- FINAL RESULTS SCREEN (hidden until quiz end) -->
+  <div id="final-screen" class="quiz-final-screen" style="display: none;">
+    <h2>Congrats!</h2>
+    <p id="final-score">Your Score: 0 of 5</p>
+    <p>Great effort – keep it up!</p>
+    <div class="final-buttons">
+      <button class="btn" id="retry-button">Retry</button>
+      <button class="btn" id="home-button">Home</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Provide EXPRESSIONS so the unified quiz script can reference it safely
+  const EXPRESSIONS = [];
+</script>
+
+{% endblock %}

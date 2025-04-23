@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="home-container">
+  <h1>Welcome To ASL Explorer!</h1>
+  <p>
+    Learn the American Sign Language (ASL) alphabet and everyday expressions 
+    through visual lessons and interactive quizzes.
+  </p>
+
+  <div class="home-buttons">
+    <a class="btn" href="{{ url_for('lessons') }}">Start Learning</a>
+    <a class="btn" href="{{ url_for('quiz') }}">Take a Quiz</a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,2 @@
+# In data/letters.py:
+LETTERS = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="expressions-container">
+  <div class="sign-viewer">
+    <span id="prev-arrow" class="arrow">&#10094;</span>
+    <figure>
+      <img
+        id="sign-image"
+        src="{{ url_for('static', filename='images/asl_expressions/' ~ items[0].key ~ '.gif') }}"
+        alt="ASL Expression: {{ items[0].label }}"
+      >
+      <figcaption id="expression-label">{{ items[0].label }}</figcaption>
+    </figure>
+    <span id="next-arrow" class="arrow">&#10095;</span>
+  </div>
+
+  <a class="btn take-quiz-btn" href="{{ url_for('quiz_expressions') }}">
+    Take a Quiz
+  </a>
+</div>
+
+<script>
+  // Expose EXPRESSIONS for the JS carousel
+  const EXPRESSIONS = {{ items|tojson }};
+</script>
+
+{% endblock %}

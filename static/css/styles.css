@@ -1,0 +1,330 @@
+/* 1) Base resets & navbar remain the same; ensure white background */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF; /* Force white background */
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.navbar {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar li {
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.navbar a:hover {
+  background-color: #e0e0e0;
+}
+
+/* 2) Main content container */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* 3) HOME PAGE (if needed) */
+.home-container {
+  max-width: 600px;
+  margin: 2rem auto;   /* centers horizontally */
+  text-align: center;  /* center heading, paragraph, buttons */
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* --- Generic Button (for non-alphabet pages) --- */
+/* (Optional: if not used here, you can remove or rename to avoid conflict) */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem 0;
+  background-color: #4B774B; /* Green */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: #3c613c;
+}
+
+/* --- LESSONS & QUIZ Specific Styles --- */
+
+/* For lessons/quiz pages that use a centered block format */
+.lessons-container, .quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center everything horizontally */
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lesson-block, .quiz-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0; /* spacing between each item */
+}
+
+.lesson-block h3, .quiz-block h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* For buttons within lessons/quiz pages (fixed width) */
+.btn {
+  display: inline-block;
+  padding: 0.75rem;
+  background-color: #4B774B;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  width: 160px; /* so all buttons match in size */
+}
+
+.btn:hover {
+  background-color: #3c613c;
+}
+
+/* Adds a "→" after the button text */
+.arrow-btn::after {
+  content: " →";
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+/* --- Alphabet Lesson Page Specific Styles --- */
+
+/* Container that holds the alphabet lesson elements */
+.alphabet-container {
+  max-width: 600px;
+  margin: 2rem auto;        /* center horizontally */
+  text-align: center;       /* center text (including arrows) */
+  padding: 1rem;
+  box-sizing: border-box;   /* include padding in max-width */
+}
+
+/* Sign viewer: place image and navigation arrows side by side */
+.sign-viewer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Arrows: styled as large, clickable icons */
+.arrow {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0 1rem;
+  user-select: none;        /* prevent text highlight on click */
+  color: #333;
+}
+
+.arrow:hover {
+  color: #777;
+}
+
+/* Sign image: adjust size as needed */
+#sign-image {
+  width: auto;
+  max-height: 400px;  /* adjust as desired */
+}
+
+/* Letter bar: display letters in one horizontal line using Flexbox */
+.letter-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;      /* Prevent wrapping onto a new line */
+  justify-content: center; /* Center the letters within the container */
+  margin: 1rem 0;
+}
+
+.letter {
+  display: inline-block;
+  margin: 0 0.4rem;       /* Adjust spacing between letters as needed */
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Active letter highlight (if needed) */
+.letter.active-letter {
+  color: #4B774B;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+
+/* "Take a Quiz" button at the bottom */
+.take-quiz-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #4B774B;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.take-quiz-btn:hover {
+  background-color: #3c613c;
+}
+
+/* ================================
+   QUIZ PAGE STYLES
+================================ */
+.quiz-page-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.sign-viewer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+#quiz-sign-image {
+  max-height: 250px;  /* Adjust as needed */
+  width: auto;
+  margin: 0 auto;
+}
+
+.quiz-prompt {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Answer Options: two columns using CSS Grid */
+.quiz-answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* Two equal columns */
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-option {
+  background-color: #e0e0e0;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.quiz-option:hover {
+  background-color: #ccc;
+}
+
+.quiz-option.correct {
+  background-color: #88CE88; /* Green for correct answer */
+  color: #fff;
+}
+
+.quiz-option.wrong {
+  background-color: #DD7676; /* Red for wrong answer */
+  color: #fff;
+}
+
+.next-btn {
+  background-color: #4B774B;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.next-btn:hover {
+  background-color: #3c613c;
+}
+
+#question-progress {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.3rem;
+}
+
+/* ================================
+   FINAL RESULTS SCREEN STYLES
+================================ */
+.quiz-final-screen {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.quiz-final-screen h2 {
+  font-size: 2.5rem; /* Made bigger as requested */
+  margin-bottom: 1rem;
+}
+
+#final-score {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.final-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.sign-viewer figure { text-align: center; margin: 0; }
+#expression-label {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.expression.active-letter {
+  color: #4B774B;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Center everything inside the expressions lesson */
+.expressions-container {
+  text-align: center;
+}
+
+/* Make “Take a Quiz” sit in the middle */
+.take-quiz-btn {
+  display: inline-block;  /* so text-align centers it */
+  margin: 1.5rem auto 0;  /* vertical gap + auto left/right */
+}

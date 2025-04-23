@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="quiz-container">
+  <!-- Block for Quiz 1 -->
+  <div class="quiz-block">
+    <h3>Quiz 1</h3>
+    <a class="btn arrow-btn" href="{{ url_for('quiz_alphabet') }}">Alphabet</a>
+  </div>
+
+  <!-- Block for Quiz 2 -->
+  <div class="quiz-block">
+    <h3>Quiz 2</h3>
+    <a class="btn arrow-btn" href="{{ url_for('quiz_expressions') }}">Expressions</a>
+  </div>
+</div>
+
+{% endblock %}

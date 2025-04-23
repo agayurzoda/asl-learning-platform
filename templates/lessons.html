@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="lessons-container">
+  <!-- Block for Lesson 1 -->
+  <div class="lesson-block">
+    <h3>Lesson 1</h3>
+    <a class="btn arrow-btn" href="{{ url_for('lesson_alphabet') }}">Alphabet</a>
+  </div>
+
+  <!-- Block for Lesson 2 -->
+  <div class="lesson-block">
+    <h3>Lesson 2</h3>
+    <a class="btn arrow-btn" href="{{ url_for('lesson_expressions') }}">Expressions</a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="quiz-page-container" data-quiz="expressions">
+  <!-- Progress -->
+  <h2 id="question-progress">Question 1 of 5</h2>
+  <!-- Expression image -->
+  <div class="sign-viewer">
+    <img
+      id="quiz-sign-image"
+      src="{{ url_for('static', filename='images/asl_expressions/placeholder.jpeg') }}"
+      alt="ASL Expression"
+    >
+  </div>
+  <!-- Prompt & options -->
+  <p class="quiz-prompt">What does this expression mean?</p>
+  <div class="quiz-answers">
+    <button class="quiz-option" id="option0"></button>
+    <button class="quiz-option" id="option1"></button>
+    <button class="quiz-option" id="option2"></button>
+    <button class="quiz-option" id="option3"></button>
+  </div>
+  <button id="next-button" class="next-btn">Next</button>
+
+  <!-- Final screen -->
+  <div id="final-screen" class="quiz-final-screen" style="display: none;">
+    <h2>Congrats!</h2>
+    <p id="final-score">Your Score: 0/5</p>
+    <p>Great effort – keep it up!</p>
+    <div class="final-buttons">
+      <button class="btn" id="retry-button">Retry</button>
+      <button class="btn" id="home-button">Home</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Provide the actual EXPRESSIONS data for the quiz logic
+  const EXPRESSIONS = {{ items|tojson }};
+</script>
+
+{% endblock %}
