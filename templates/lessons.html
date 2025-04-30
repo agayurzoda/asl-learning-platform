@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="lessons-container">
-  <!-- Block for Lesson 1 -->
-  <div class="lesson-block">
-    <h3>Lesson 1</h3>
-    <a class="btn arrow-btn" href="{{ url_for('lesson_alphabet') }}">Alphabet</a>
+<main>
+  <div class="lessons-container">
+    <h1>Lessons</h1>
+    <p>Choose a lesson to get started with ASL practice:</p>
+    <div class="home-cards">
+      <!-- Lesson 1: Alphabet -->
+      <a href="{{ url_for('lesson_alphabet') }}" class="card cta-card">
+        <h2>Lesson 1 – Alphabet</h2>
+        <p>Learn the ASL alphabet with interactive signs.</p>
+      </a>
+      <!-- Lesson 2: Expressions -->
+      <a href="{{ url_for('lesson_expressions') }}" class="card secondary-card">
+        <h2>Lesson 2 – Expressions</h2>
+        <p>Practice common ASL expressions and greetings.</p>
+      </a>
+    </div>
   </div>
-
-  <!-- Block for Lesson 2 -->
-  <div class="lesson-block">
-    <h3>Lesson 2</h3>
-    <a class="btn arrow-btn" href="{{ url_for('lesson_expressions') }}">Expressions</a>
-  </div>
-</div>
+</main>
 
 {% endblock %}

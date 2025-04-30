@@ -8,10 +8,22 @@
     through visual lessons and interactive quizzes.
   </p>
 
-  <div class="home-buttons">
-    <a class="btn" href="{{ url_for('lessons') }}">Start Learning</a>
-    <a class="btn" href="{{ url_for('quiz') }}">Take a Quiz</a>
+  <div class="home-cards">
+  
+  
+    <!-- Secondary action card -->
+    <a href="{{ url_for('quiz') }}" class="card secondary-card">
+      <h2>Take a Quiz</h2>
+      <p>Test what you’ve learned with quick, fun quizzes.</p>
+    </a>
+
+      <!-- Primary CTA card -->
+      <a href="{{ url_for('lessons') }}" class="card cta-card">
+        <h2>Start Learning</h2>
+        <p>Dive into the ASL lessons and master the alphabet & expressions.</p>
+      </a>
   </div>
+  
 </div>
 
 {% endblock %}

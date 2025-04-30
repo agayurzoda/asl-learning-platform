@@ -2,9 +2,10 @@
 {% block content %}
 
 <div class="quiz-page-container" data-quiz="expressions">
-  <!-- Progress -->
+  <!-- Progress Indicator -->
   <h2 id="question-progress">Question 1 of 5</h2>
-  <!-- Expression image -->
+  
+  <!-- ASL Expression Image -->
   <div class="sign-viewer">
     <img
       id="quiz-sign-image"
@@ -12,30 +13,49 @@
       alt="ASL Expression"
     >
   </div>
-  <!-- Prompt & options -->
+  
+  <!-- Quiz Prompt -->
   <p class="quiz-prompt">What does this expression mean?</p>
+  
+  <!-- Answer Options -->
   <div class="quiz-answers">
     <button class="quiz-option" id="option0"></button>
     <button class="quiz-option" id="option1"></button>
     <button class="quiz-option" id="option2"></button>
     <button class="quiz-option" id="option3"></button>
   </div>
-  <button id="next-button" class="next-btn">Next</button>
+  
+  <!-- Back & Next -->
+  <div class="navigation-buttons">
+    <button id="back-button" class="back-btn" disabled>Back</button>
+    <button id="next-button" class="next-btn" disabled>Next</button>
+  </div>
 
-  <!-- Final screen -->
+  <!-- Error message if no answer selected -->
+  <p id="error-message" class="error-message" style="display:none;">
+    Please select an answer before continuing.
+  </p>
+
+  <!-- FINAL RESULTS SCREEN (initially hidden) -->
   <div id="final-screen" class="quiz-final-screen" style="display: none;">
     <h2>Congrats!</h2>
-    <p id="final-score">Your Score: 0/5</p>
+    <p id="final-score">Your Score: 0 of 5</p>
     <p>Great effort – keep it up!</p>
-    <div class="final-buttons">
-      <button class="btn" id="retry-button">Retry</button>
-      <button class="btn" id="home-button">Home</button>
+
+    <!-- Vertical stack: Review Lesson, then Retry/Home side by side -->
+    <div class="final-buttons-vertical">
+      <button class="btn" id="lesson-button">Review Lesson</button>
+      <div class="final-buttons-horizontal">
+        <button class="btn" id="retry-button">Retry</button>
+        <button class="btn" id="home-button">Home</button>
+      </div>
     </div>
   </div>
-</div>
+
+
 
 <script>
-  // Provide the actual EXPRESSIONS data for the quiz logic
+  // expose real expressions data for the JS
   const EXPRESSIONS = {{ items|tojson }};
 </script>
 

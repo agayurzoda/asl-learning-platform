@@ -260,20 +260,63 @@ main {
   color: #fff;
 }
 
-.next-btn {
-  background-color: #4B774B;
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
+.quiz-answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
+.quiz-option {
+  background-color: #e0e0e0;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+/* Make both navigation buttons bigger */
+.back-btn,
+.next-btn {
+  padding: 1rem 2rem;      /* increase click area */
+  font-size: 1.2rem;       /* larger text */
+  border-radius: 4px;      /* match your other buttons */
+  min-width: 120px;        /* ensure consistent width */
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+/* Next = primary green */
+.next-btn {
+  background-color: #4B774B;  /* your green */
+  color: #fff;
+}
 .next-btn:hover {
   background-color: #3c613c;
 }
+
+/* Back = light secondary */
+.back-btn {
+  background-color: #e0e0e0;  /* light grey */
+  color: #333;
+}
+.back-btn:hover {
+  background-color: #d5d5d5;
+}
+
+/* Ensure they sit nicely side-by-side */
+.navigation-buttons {
+  display: flex;
+  justify-content: center; /* center both buttons */
+  gap: 1rem;
+  margin: 1.5rem 0;         /* spacing above/below */
+}
+
 
 #question-progress {
   margin: 0.5rem 0 1rem;
@@ -327,4 +370,173 @@ main {
 .take-quiz-btn {
   display: inline-block;  /* so text-align centers it */
   margin: 1.5rem auto 0;  /* vertical gap + auto left/right */
+}
+
+.error-message {
+  color: #D9534F;     /* bootstrap danger red-ish */
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+/* Stack Review Lesson above the other two, centered */
+.final-buttons-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Place Retry & Home side by side */
+.final-buttons-horizontal {
+  display: flex;
+  gap: 1rem;
+}
+
+#expression-progress {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  /* increase shelf space so the badge sits higher above the image */
+  padding-top: 3rem;  /* was 2rem, now 3rem */
+}
+
+.progress-overlay {
+  position: absolute;
+  top: 0;                
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.3); /* lighter black */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Container for the “card” buttons */
+.home-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Base card style */
+.card {
+  display: block;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1;
+  min-width: 220px;
+}
+
+/* Lift on hover */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+/* Primary CTA – big green card */
+.cta-card {
+  background-color: #4B774B;
+  color: #fff;
+}
+
+/* Secondary action – light grey card */
+.secondary-card {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Headings inside cards */
+.card h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+/* Descriptions inside cards */
+.card p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Only on Lessons & Quiz pages: make both cards green */
+.lessons-container .card,
+.quiz-container .card {
+  background-color: #4B774B;
+  color: #fff;
+}
+
+.lessons-container .card:hover,
+.quiz-container .card:hover {
+  background-color: #3c613c;
+}
+
+/* ABOUT PAGE BASE */
+.about-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Card wrapper for each section */
+.about-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.about-card {
+  background: #fff;
+  color: #333;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Headings and text inside cards */
+.about-card h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.about-card p,
+.about-card ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0.75rem 0 0;
+}
+
+.about-card ul {
+  padding-left: 1.2rem;
 }

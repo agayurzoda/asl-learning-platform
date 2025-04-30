@@ -1,4 +1,3 @@
-{# templates/quiz_alphabet.html #}
 {% extends "base.html" %}
 {% block content %}
 
@@ -26,23 +25,37 @@
     <button class="quiz-option" id="option3"></button>
   </div>
   
-  <!-- Next Button -->
-  <button id="next-button" class="next-btn" disabled>Next</button>
+  <!-- Back & Next -->
+  <div class="navigation-buttons">
+    <button id="back-button" class="back-btn" disabled>Back</button>
+    <button id="next-button" class="next-btn" disabled>Next</button>
+  </div>
 
-  <!-- FINAL RESULTS SCREEN (hidden until quiz end) -->
+  <!-- Error message if no answer selected -->
+  <p id="error-message" class="error-message" style="display:none;">
+    Please select an answer before continuing.
+  </p>
+
+  <!-- FINAL RESULTS SCREEN (initially hidden) -->
   <div id="final-screen" class="quiz-final-screen" style="display: none;">
     <h2>Congrats!</h2>
     <p id="final-score">Your Score: 0 of 5</p>
     <p>Great effort – keep it up!</p>
-    <div class="final-buttons">
-      <button class="btn" id="retry-button">Retry</button>
-      <button class="btn" id="home-button">Home</button>
+
+    <!-- Vertical stack: Review Lesson, then Retry/Home side by side -->
+    <div class="final-buttons-vertical">
+      <button class="btn" id="lesson-button">Review Lesson</button>
+      <div class="final-buttons-horizontal">
+        <button class="btn" id="retry-button">Retry</button>
+        <button class="btn" id="home-button">Home</button>
+      </div>
     </div>
   </div>
-</div>
+
+
 
 <script>
-  // Provide EXPRESSIONS so the unified quiz script can reference it safely
+  // so unified quiz script doesn't error
   const EXPRESSIONS = [];
 </script>
 

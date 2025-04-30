@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="expressions-container">
+<div
+  class="expressions-container"
+  data-expressions='{{ items|tojson|e }}'
+>
   <div class="sign-viewer">
     <span id="prev-arrow" class="arrow">&#10094;</span>
     <figure>
@@ -15,14 +18,13 @@
     <span id="next-arrow" class="arrow">&#10095;</span>
   </div>
 
+   <p id="expression-progress" class="instruction">
+       Expression 1 of {{ items|length }}
+     </p>
+
   <a class="btn take-quiz-btn" href="{{ url_for('quiz_expressions') }}">
     Take a Quiz
   </a>
 </div>
-
-<script>
-  // Expose EXPRESSIONS for the JS carousel
-  const EXPRESSIONS = {{ items|tojson }};
-</script>
 
 {% endblock %}
