@@ -225,6 +225,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const final = document.getElementById('final-screen');
       final.style.display                = 'block';
       document.getElementById('final-score').textContent = `Your Score: ${score} out of ${TOTAL_QUESTIONS}!`;
+      // swap buttons on perfect score
+      if (score === TOTAL_QUESTIONS) {
+        const lessonBtn = document.getElementById('lesson-button');
+        const homeBtn   = document.getElementById('home-button');
+        const vert  = lessonBtn.parentNode;
+        const horiz = homeBtn.parentNode;
+        horiz.insertBefore(lessonBtn, homeBtn);
+        vert.insertBefore(homeBtn, vert.firstChild);
+      }
     }
   });
 
