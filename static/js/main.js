@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (i < 0) i = LETTERS.length - 1;
       if (i >= LETTERS.length) i = 0;
       currentIndex = i;
-      const L      = LETTERS[i];
-      const ext    = (L === "J" || L === "Z") ? "gif" : "jpeg";
+      const L   = LETTERS[i];
+      const ext = (L === "J" || L === "Z") ? "gif" : "jpeg";
 
       signImage.src = `/static/images/asl_alphabet/${L}.${ext}`;
       signImage.alt = `ASL Sign for Letter ${L}`;
@@ -42,17 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
   if (exprContainer && !document.querySelector('.quiz-page-container')) {
     console.log("Lessons EXPRESSIONS page detected");
 
-    // Retrieve the data-expressions JSON
     let exprData = [];
     const dataAttr = exprContainer.dataset.expressions;
     if (dataAttr) {
-      try {
-        exprData = JSON.parse(dataAttr);
-      } catch (e) {
-        console.error('Invalid JSON in data-expressions', e);
-      }
+      try { exprData = JSON.parse(dataAttr); }
+      catch (e) { console.error('Invalid JSON in data-expressions', e); }
     }
-    // fallback if window.EXPRESSIONS defined
     if (!exprData.length && typeof EXPRESSIONS !== 'undefined') {
       exprData = EXPRESSIONS;
     }
@@ -61,11 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    let idx     = 0;
-    const imgEl = document.getElementById('sign-image');
-    const capEl = document.getElementById('expression-label');
-    const prev  = document.getElementById('prev-arrow');
-    const next  = document.getElementById('next-arrow');
+    let idx      = 0;
+    const imgEl  = document.getElementById('sign-image');
+    const capEl  = document.getElementById('expression-label');
+    const prev   = document.getElementById('prev-arrow');
+    const next   = document.getElementById('next-arrow');
     const progEl = document.getElementById('expression-progress');
 
     function showExpression(i) {
@@ -116,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn   = document.getElementById('next-button');
   const errorMsg  = document.getElementById('error-message');
 
-  // shuffle
+  // shuffle helper
   function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -129,8 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
     questions = [];
     let pool = [...ALL_KEYS];
     for (let i = 0; i < TOTAL_QUESTIONS; i++) {
-      const pick        = Math.floor(Math.random() * pool.length);
-      const correctKey  = pool.splice(pick, 1)[0];
+      const pick         = Math.floor(Math.random() * pool.length);
+      const correctKey   = pool.splice(pick, 1)[0];
       const correctLabel = ALL_LABELS[ALL_KEYS.indexOf(correctKey)];
 
       let wrongs = ALL_KEYS.filter(k => k !== correctKey);
@@ -146,24 +141,26 @@ document.addEventListener("DOMContentLoaded", function () {
           : EXPRESSIONS.find(e => e.key === k).label
       );
       const correctIndex = options.indexOf(correctLabel);
+
       questions.push({ key: correctKey, label: correctLabel, options, correctIndex });
     }
   }
 
+  // get file ext
   function getExt(key) {
     return quizType === 'alphabet'
       ? (key === 'J' || key === 'Z' ? 'gif' : 'jpeg')
       : 'gif';
   }
 
+  // show a question
   function showQuestion() {
     const q = questions[currentQuestionIndex];
     progEl.textContent = `Question ${currentQuestionIndex + 1} of ${TOTAL_QUESTIONS}`;
-
     imgElQ.src = `/static/images/asl_${quizType}/${q.key}.${getExt(q.key)}`;
     imgElQ.alt = `ASL ${quizType === 'alphabet' ? 'Letter' : 'Expression'}: ${q.label}`;
 
-    answerEls.forEach((btn, i) => {
+    answerEls.forEach((btn,i) => {
       btn.textContent = q.options[i];
       btn.disabled    = false;
       btn.classList.remove('correct','wrong');
@@ -186,18 +183,24 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       nextBtn.disabled = true;
     }
-
-    backBtn.disabled = (currentQuestionIndex === 0);
+    backBtn.disabled = currentQuestionIndex === 0;
   }
 
+  // start
   generateQuestions();
   showQuestion();
+
+  // answer clicks
   answerEls.forEach((btn,i) => btn.addEventListener('click', () => {
-    if (userAnswers[currentQuestionIndex] === null && i === questions[currentQuestionIndex].correctIndex) score++;
+    if (userAnswers[currentQuestionIndex] === null &&
+        i === questions[currentQuestionIndex].correctIndex) {
+      score++;
+    }
     userAnswers[currentQuestionIndex] = i;
     showQuestion();
   }));
 
+  // back
   backBtn.addEventListener('click', () => {
     if (currentQuestionIndex > 0) {
       currentQuestionIndex--;
@@ -205,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // next / finish
   nextBtn.addEventListener('click', () => {
     if (userAnswers[currentQuestionIndex] === null) {
       errorMsg.style.display = 'block';
@@ -213,45 +217,89 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentQuestionIndex < TOTAL_QUESTIONS - 1) {
       currentQuestionIndex++;
       showQuestion();
-    } else {
-      progEl.style.display               = 'none';
-      promptEl.style.display             = 'none';
-      document.querySelector('.quiz-answers').style.display = 'none';
-      backBtn.style.display              = 'none';
-      nextBtn.style.display              = 'none';
-      document.querySelector('.sign-viewer').style.display = 'none';
-      document.getElementById('expression-progress') && (document.getElementById('expression-progress').style.display = 'none');
-
-      const final = document.getElementById('final-screen');
-      final.style.display                = 'block';
-      document.getElementById('final-score').textContent = `Your Score: ${score} out of ${TOTAL_QUESTIONS}!`;
-      // swap buttons on perfect score
-      if (score === TOTAL_QUESTIONS) {
-        const lessonBtn = document.getElementById('lesson-button');
-        const homeBtn   = document.getElementById('home-button');
-        const vert  = lessonBtn.parentNode;
-        const horiz = homeBtn.parentNode;
-        horiz.insertBefore(lessonBtn, homeBtn);
-        vert.insertBefore(homeBtn, vert.firstChild);
-      }
+      return;
     }
+
+    // hide quiz
+    progEl.style.display               = 'none';
+    promptEl.style.display             = 'none';
+    document.querySelector('.quiz-answers').style.display = 'none';
+    backBtn.style.display              = 'none';
+    nextBtn.style.display              = 'none';
+    document.querySelector('.sign-viewer').style.display = 'none';
+    const exprProg = document.getElementById('expression-progress');
+    if (exprProg) exprProg.style.display = 'none';
+
+    // **NEW: update the displayed score**
+    document.getElementById('final-score').textContent =
+      `Your Score: ${score} of ${TOTAL_QUESTIONS}`;
+
+    // build buttons
+    const final     = document.getElementById('final-screen');
+    const container = final.querySelector('.final-buttons');
+    const homeBtn   = document.getElementById('home-button');
+    const retryBtn  = document.getElementById('retry-button');
+    const lessonBtn = document.getElementById('lesson-button');
+    container.innerHTML = '';
+
+    if (score === TOTAL_QUESTIONS) {
+      final.classList.add('perfect-score');
+      container.appendChild(homeBtn);
+      const sec = document.createElement('div');
+      sec.className = 'secondary-buttons';
+      sec.appendChild(retryBtn);
+      sec.appendChild(lessonBtn);
+      container.appendChild(sec);
+    } else {
+      final.classList.remove('perfect-score');
+      container.appendChild(lessonBtn);
+      const sec = document.createElement('div');
+      sec.className = 'secondary-buttons';
+      sec.appendChild(retryBtn);
+      sec.appendChild(homeBtn);
+      container.appendChild(sec);
+    }
+
+    // show final
+    final.style.display = 'block';
   });
 
-  document.getElementById('retry-button').addEventListener('click', () => {
-    score = 0;
-    currentQuestionIndex = 0;
-    userAnswers.fill(null);
-    generateQuestions();
-    showQuestion();
-    document.getElementById('final-screen').style.display = 'none';
-  });
+  // retry
+ // Replace your existing retry-click listener with this:
 
+document.getElementById('retry-button').addEventListener('click', () => {
+  // 1) Reset state
+  score = 0;
+  currentQuestionIndex = 0;
+  userAnswers.fill(null);
+  generateQuestions();
+  showQuestion();
+
+  // 2) Show all quiz UI elements again
+  progEl.style.display               = '';
+  promptEl.style.display             = '';
+  document.querySelector('.quiz-answers').style.display = '';
+  backBtn.style.display              = '';
+  nextBtn.style.display              = '';
+  document.querySelector('.sign-viewer').style.display = '';
+  const exprProg = document.getElementById('expression-progress');
+  if (exprProg) exprProg.style.display = '';
+
+  // 3) Hide the final screen
+  document.getElementById('final-screen').style.display = 'none';
+});
+
+
+  // home
   document.getElementById('home-button').addEventListener('click', () => {
     window.location.href = '/';
   });
 
+  // lesson
   document.getElementById('lesson-button').addEventListener('click', () => {
-    const target = quizType === 'alphabet' ? '/lessons/alphabet' : '/lessons/expressions';
+    const target = quizType === 'alphabet'
+      ? '/lessons/alphabet'
+      : '/lessons/expressions';
     window.location.href = target;
   });
 });

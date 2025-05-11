@@ -1,8 +1,8 @@
-/* 1) Base resets & navbar remain the same; ensure white background */
+/* 1) Base resets & navbar */
 body {
   margin: 0;
   padding: 0;
-  background-color: #FFFFFF; /* Force white background */
+  background-color: #FFFFFF;
   font-family: Arial, sans-serif;
   color: #333;
 }
@@ -42,11 +42,11 @@ main {
   padding: 0 1rem;
 }
 
-/* 3) HOME PAGE (if needed) */
+/* 3) HOME PAGE */
 .home-container {
   max-width: 600px;
-  margin: 2rem auto;   /* centers horizontally */
-  text-align: center;  /* center heading, paragraph, buttons */
+  margin: 2rem auto;
+  text-align: center;
 }
 
 .home-container h1 {
@@ -54,13 +54,12 @@ main {
   margin-bottom: 1rem;
 }
 
-/* --- Generic Button (for non-alphabet pages) --- */
-/* (Optional: if not used here, you can remove or rename to avoid conflict) */
+/* Generic .btn */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   margin: 0.5rem 0;
-  background-color: #4B774B; /* Green */
+  background-color: #4B774B;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -70,146 +69,52 @@ main {
   background-color: #3c613c;
 }
 
-/* --- LESSONS & QUIZ Specific Styles --- */
-
-/* For lessons/quiz pages that use a centered block format */
-/* Intro text on Lessons & Quiz pages */
+/* LESSONS & QUIZ headings */
 .lessons-container h1,
 .quiz-container h1 {
-  font-size: 2.5rem;               /* bigger main title */
-  font-family: 'Merriweather', serif;  /* example serif font */
+  font-size: 2.5rem;
+  font-family: 'Merriweather', serif;
   margin-bottom: 0.5rem;
 }
 
 .lessons-container p,
 .quiz-container p {
-  font-size: 1.25rem;              /* larger body text */
-  font-family: 'Open Sans', sans-serif; /* clean, modern sans */
+  font-size: 1.25rem;
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.6;
-  margin-bottom: 1.5rem;           /* space before cards */
+  margin-bottom: 1.5rem;
 }
 
-
-.lesson-block, .quiz-block {
+.lesson-block,
+.quiz-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem 0; /* spacing between each item */
+  margin: 2rem 0;
 }
 
-.lesson-block h3, .quiz-block h3 {
+.lesson-block h3,
+.quiz-block h3 {
   margin-bottom: 1rem;
   font-size: 1.3rem;
   font-weight: bold;
 }
 
-/* For buttons within lessons/quiz pages (fixed width) */
+/* LESSONS & QUIZ buttons */
 .btn {
-  display: inline-block;
-  padding: 0.75rem;
-  background-color: #4B774B;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
+  width: 160px;
   text-align: center;
-  width: 160px; /* so all buttons match in size */
 }
 
-.btn:hover {
-  background-color: #3c613c;
-}
-
-/* Adds a "→" after the button text */
 .arrow-btn::after {
   content: " →";
   font-weight: bold;
   margin-left: 0.5rem;
 }
 
-/* --- Alphabet Lesson Page Specific Styles --- */
-
-/* Container that holds the alphabet lesson elements */
+/* Alphabet Lesson */
 .alphabet-container {
   max-width: 600px;
-  margin: 2rem auto;        /* center horizontally */
-  text-align: center;       /* center text (including arrows) */
-  padding: 1rem;
-  box-sizing: border-box;   /* include padding in max-width */
-}
-
-/* Sign viewer: place image and navigation arrows side by side */
-.sign-viewer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-/* Arrows: styled as large, clickable icons */
-.arrow {
-  cursor: pointer;
-  font-size: 2rem;
-  margin: 0 1rem;
-  user-select: none;        /* prevent text highlight on click */
-  color: #333;
-}
-
-.arrow:hover {
-  color: #777;
-}
-
-/* Sign image: adjust size as needed */
-#sign-image {
-  width: auto;
-  max-height: 400px;  /* adjust as desired */
-}
-
-/* Letter bar: display letters in one horizontal line using Flexbox */
-.letter-bar {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;      /* Prevent wrapping onto a new line */
-  justify-content: center; /* Center the letters within the container */
-  margin: 1rem 0;
-}
-
-.letter {
-  display: inline-block;
-  margin: 0 0.4rem;       /* Adjust spacing between letters as needed */
-  font-size: 1.2rem;
-  color: #333;
-  cursor: pointer;
-}
-
-/* Active letter highlight (if needed) */
-.letter.active-letter {
-  color: #4B774B;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-
-/* "Take a Quiz" button at the bottom */
-.take-quiz-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #4B774B;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.take-quiz-btn:hover {
-  background-color: #3c613c;
-}
-
-/* ================================
-   QUIZ PAGE STYLES
-================================ */
-.quiz-page-container {
-  max-width: 700px;
   margin: 2rem auto;
   text-align: center;
   padding: 1rem;
@@ -218,12 +123,71 @@ main {
 
 .sign-viewer {
   display: flex;
+  align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
 }
 
+.arrow {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0 1rem;
+  user-select: none;
+  color: #333;
+}
+
+.arrow:hover {
+  color: #777;
+}
+
+#sign-image {
+  max-height: 400px;
+  width: auto;
+}
+
+.letter-bar {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.letter {
+  margin: 0 0.4rem;
+  font-size: 1.2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.letter.active-letter {
+  color: #4B774B;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.take-quiz-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #4B774B;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.take-quiz-btn:hover {
+  background-color: #3c613c;
+}
+
+/* QUIZ PAGE */
+.quiz-page-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
 #quiz-sign-image {
-  max-height: 250px;  /* Adjust as needed */
+  max-height: 250px;
   width: auto;
   margin: 0 auto;
 }
@@ -231,41 +195,6 @@ main {
 .quiz-prompt {
   margin: 1rem 0;
   font-size: 1.2rem;
-  color: #333;
-}
-
-/* Answer Options: two columns using CSS Grid */
-.quiz-answers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;  /* Two equal columns */
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.quiz-option {
-  background-color: #e0e0e0;
-  border: none;
-  color: #333;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: left;
-  transition: background-color 0.2s;
-}
-
-.quiz-option:hover {
-  background-color: #ccc;
-}
-
-.quiz-option.correct {
-  background-color: #88CE88; /* Green for correct answer */
-  color: #fff;
-}
-
-.quiz-option.wrong {
-  background-color: #DD7676; /* Red for wrong answer */
-  color: #fff;
 }
 
 .quiz-answers {
@@ -287,151 +216,100 @@ main {
   transition: background-color 0.2s;
 }
 
-/* Make both navigation buttons bigger */
+.quiz-option:hover {
+  background-color: #ccc;
+}
+
+.quiz-option.correct {
+  background-color: #88CE88;
+  color: #fff;
+}
+
+.quiz-option.wrong {
+  background-color: #DD7676;
+  color: #fff;
+}
+
+/* Navigation buttons */
 .back-btn,
 .next-btn {
-  padding: 1rem 2rem;      /* increase click area */
-  font-size: 1.2rem;       /* larger text */
-  border-radius: 4px;      /* match your other buttons */
-  min-width: 120px;        /* ensure consistent width */
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  min-width: 120px;
   cursor: pointer;
   border: none;
   transition: background-color 0.2s;
 }
 
-/* Next = primary green */
 .next-btn {
-  background-color: #4B774B;  /* your green */
+  background-color: #4B774B;
   color: #fff;
 }
+
 .next-btn:hover {
   background-color: #3c613c;
 }
 
-/* Back = light secondary */
 .back-btn {
-  background-color: #e0e0e0;  /* light grey */
+  background-color: #e0e0e0;
   color: #333;
 }
+
 .back-btn:hover {
   background-color: #d5d5d5;
 }
 
-/* Ensure they sit nicely side-by-side */
 .navigation-buttons {
   display: flex;
-  justify-content: center; /* center both buttons */
+  justify-content: center;
   gap: 1rem;
-  margin: 1.5rem 0;         /* spacing above/below */
+  margin: 1.5rem 0;
 }
-
 
 #question-progress {
   margin: 0.5rem 0 1rem;
   font-size: 1.3rem;
 }
 
-/* ================================
-   FINAL RESULTS SCREEN STYLES
-================================ */
-.quiz-final-screen {
-  margin-top: 2rem;
+#error-message {
+  color: #D9534F;
+  font-size: 1rem;
+  margin-top: 0.5rem;
   text-align: center;
 }
 
-.quiz-final-screen h2 {
-  font-size: 2.5rem; /* Made bigger as requested */
-  margin-bottom: 1rem;
-}
-
-#final-score {
-  font-size: 1.5rem;
-  margin: 1rem 0;
-  font-weight: bold;
-}
-
-.final-buttons {
-  margin-top: 1rem;
+/* EXPRESSIONS LESSON */
+.expressions-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 1rem;
-  justify-content: center;
 }
 
-.sign-viewer figure { text-align: center; margin: 0; }
+.sign-viewer figure {
+  text-align: center;
+  margin: 0;
+}
+
 #expression-label {
   margin-top: 0.5rem;
   font-size: 1.2rem;
   text-transform: capitalize;
 }
-.expression.active-letter {
-  color: #4B774B;
-  font-weight: bold;
-  text-decoration: underline;
-}
 
-/* Center everything inside the expressions lesson */
-.expressions-container {
-  text-align: center;
-}
-
-/* Make “Take a Quiz” sit in the middle */
-.take-quiz-btn {
-  display: inline-block;  /* so text-align centers it */
-  margin: 1.5rem auto 0;  /* vertical gap + auto left/right */
-}
-
-.error-message {
-  color: #D9534F;     /* bootstrap danger red-ish */
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-/* Stack Review Lesson above the other two, centered */
-.final-buttons-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-/* Place Retry & Home side by side */
-.final-buttons-horizontal {
-  display: flex;
-  gap: 1rem;
-}
-
-#expression-progress {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.image-wrapper {
-  position: relative;
+/* Center “Take a Quiz” button */
+.expressions-container .take-quiz-btn,
+.expressions-container .btn {
   display: inline-block;
-  /* increase shelf space so the badge sits higher above the image */
-  padding-top: 3rem;  /* was 2rem, now 3rem */
+  margin: 1rem auto 0;
 }
 
-.progress-overlay {
-  position: absolute;
-  top: 0;                
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  background: rgba(0, 0, 0, 0.3); /* lighter black */
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-size: 1rem;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-/* Container for the “card” buttons */
-.home-cards {
+/* HOME/LESSONS/QUIZ cards */
+.home-cards,
+.lessons-container .home-cards,
+.quiz-container .home-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -439,7 +317,6 @@ main {
   margin: 2rem 0;
 }
 
-/* Base card style */
 .card {
   display: block;
   text-decoration: none;
@@ -452,37 +329,31 @@ main {
   min-width: 220px;
 }
 
-/* Lift on hover */
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 10px rgba(0,0,0,0.15);
 }
 
-/* Primary CTA – big green card */
 .cta-card {
   background-color: #4B774B;
   color: #fff;
 }
 
-/* Secondary action – light grey card */
 .secondary-card {
   background-color: #f0f0f0;
   color: #333;
 }
 
-/* Headings inside cards */
 .card h2 {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
 
-/* Descriptions inside cards */
 .card p {
   font-size: 1rem;
   line-height: 1.4;
 }
 
-/* Only on Lessons & Quiz pages: make both cards green */
 .lessons-container .card,
 .quiz-container .card {
   background-color: #4B774B;
@@ -494,7 +365,7 @@ main {
   background-color: #3c613c;
 }
 
-/* ABOUT PAGE BASE */
+/* ABOUT PAGE */
 .about-page {
   max-width: 800px;
   margin: 2rem auto;
@@ -504,7 +375,6 @@ main {
   gap: 1.5rem;
 }
 
-/* Card wrapper for each section */
 .about-card {
   background: #fff;
   border-radius: 8px;
@@ -518,21 +388,6 @@ main {
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
-.about-card {
-  background: #fff;
-  color: #333;
-  border-radius: 8px;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.about-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-/* Headings and text inside cards */
 .about-card h2 {
   margin-top: 0;
   font-size: 1.5rem;
@@ -549,3 +404,66 @@ main {
   padding-left: 1.2rem;
 }
 
+/* ───── FINAL SCREEN CARD ───── */
+#final-screen {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* ───── FINAL SCREEN: THEMING & LAYOUT ───── */
+/* 1) Stack primary + secondary row */
+#final-screen .final-buttons {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+/* 2) Secondary row side‑by‑side */
+#final-screen .secondary-buttons {
+  display: flex !important;
+  gap: 0.75rem !important;
+}
+
+/* ───── BUTTON SIZING & COLORS ───── */
+/* Uniform sizing */
+#final-screen .final-buttons button {
+  width:          200px    !important;
+  padding:        0.65rem 1rem !important;
+  font-size:      1.25rem  !important;
+  border:         none     !important;
+  border-radius:  6px      !important;
+  background-color: #e0e0e0 !important;
+  color:            #333    !important;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* Hover lift */
+#final-screen .final-buttons button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* Top button green */
+#final-screen .final-buttons > button:first-child {
+  background-color: #4B774B !important;
+  color:            #fff    !important;
+}
+
+/* ───── TEXT SIZING ───── */
+#final-screen h2 {
+  font-size: 3rem !important;
+  margin-bottom: 1rem !important;
+}
+#final-screen #final-score {
+  font-size: 2.5rem !important;
+  margin: 0.75rem 0 !important;
+}
+#final-screen p:nth-of-type(2) {
+  font-size: 1.1rem !important;
+  color:      #555    !important;
+  margin-bottom: 2rem !important;
+}
